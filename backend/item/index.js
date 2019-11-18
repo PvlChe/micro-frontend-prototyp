@@ -16,7 +16,6 @@ app.use(bodyParser.json());
 
 // CORS Header Handling
 app.use((req,res,next)=>{
-    console.log('what happens');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
