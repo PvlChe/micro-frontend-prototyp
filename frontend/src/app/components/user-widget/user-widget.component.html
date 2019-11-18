@@ -1,0 +1,22 @@
+<div class="p-3 d-flex flex-column user mx-5 my-3" *ngIf="user; else warning">
+  <h2>User widget.</h2>
+  <h3>Your personal data:</h3>
+  <div>
+    <mat-label><b>Firstname: </b></mat-label>
+    <span>{{user.firstname}}</span>
+  </div>
+  <div>
+    <mat-label><b>Lastname: </b></mat-label>
+    <span>{{user.lastname}}</span>
+  </div>
+  <div>
+    <mat-label><b>Email: </b></mat-label>
+    <span>{{user.email}}</span>
+  </div>
+</div>
+<ng-template #warning>
+  <div class="p-3 d-flex flex-column user mx-5 my-3">
+    <h2>User widget.</h2>
+    <h5>No data. Please sign in.</h5>
+  </div>
+</ng-template>

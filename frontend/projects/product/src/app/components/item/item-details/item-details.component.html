@@ -1,0 +1,66 @@
+<div *ngIf="item" class="wrapper d-flex">
+  <div class="item-container w-50">
+    <mat-card class="example-card m-5 card mat-elevation-z0">
+      <mat-card-header>
+        <mat-card-title>{{item.brand + ' ' + item.model}}</mat-card-title>
+        <mat-card-subtitle>{{item.color + ', ' + item.volume}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{item.imageURL}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <h5><b>Description:</b></h5>
+      <p>
+        {{item.description}}
+      </p>
+      <h5><b>Details:</b></h5>
+      <ul class="">
+        <li><b>Screen:</b>{{' ' + item.screen}}</li>
+        <li><b>Camera:</b>{{' ' + item.camera}}</li>
+        <li><b>Processor:</b>{{' ' + item.processor}}</li>
+        <li><b>RAM:</b>{{' ' + item.ram}}</li>
+      </ul>
+    </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="actions-container w-50 p-5 card m-5">
+    <mat-tab-group mat-stretch-tabs disableRipple>
+      <mat-tab label="Buy">
+        <div class="d-flex">
+          <div class="w-50 py-5 d-flex flex-column">
+            <h5 class="mb-4">Order Details:</h5>
+            <mat-form-field class="my-5 w-50">
+              <mat-label>Amount</mat-label>
+              <mat-select [(value)]="selected" [required]="true">
+                <mat-option *ngFor="let num of amount" value="{{num}}">
+                  <span>{{num}}</span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-label><b>Total price:</b></mat-label>
+            <span>{{' ' + item.price*selected + '$'}}</span>
+            <div class="actions-container">
+              <button mat-stroked-button color="primary" class="mr-3" (click)="onBackClick()">Back</button>
+                <button mat-raised-button color="primary" class="mx-auto my-5 w-25 text-white text-decoration-none"
+                   (click)="onBuyClick()">Buy
+                </button>
+            </div>
+          </div>
+          <div class="w-50 py-5">
+            <h5 class="mb-4">Delivery Details:</h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, debitis hic id impedit laborum
+              officia qui quod tenetur veniam. Ab aliquam asperiores beatae cum deleniti dolorem eaque eligendi
+              eum expedita illum impedit inventore maxime modi numquam odit pariatur placeat quae quidem quis
+            </p>
+            <p>
+              quos sed suscipit, unde, ut vitae voluptas? A aut doloribus et eum, nulla pariatur quasi. Amet ea
+              enim maiores numquam odio pariatur possimus provident qui quis quod? Aperiam atque, fugit illum
+              inventore labore modi molestias possimus praesentium quam vero. Ab aspernatur cumque dicta harum
+              ipsam laborum libero minima nam nulla, quisquam recusandae repellat rerum saepe unde vero voluptas?
+            </p>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+

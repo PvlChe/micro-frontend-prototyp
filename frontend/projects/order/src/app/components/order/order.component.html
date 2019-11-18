@@ -1,0 +1,67 @@
+<div class="m-5 d-flex flex-wrap" *ngIf="data.user">
+  <h2 class="w-100 text-center mb-2">Delievery Details</h2>
+  <div class="input-container d-flex flex-column w-50 px-5" >
+    <mat-label class="mb-2">Anrede:</mat-label>
+    <mat-radio-group [(ngModel)]="anrede">
+      <mat-radio-button class="example-margin mr-2" value="Herr">Herr</mat-radio-button>
+      <mat-radio-button class="example-margin mr-2" value="Frau">Frau</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field class="mt-1 mb-3 w-75">
+      <mat-label>Firstname</mat-label>
+      <input matInput #first [required]="true" [(ngModel)]="data.user.firstname">
+    </mat-form-field>
+    <mat-form-field class="mt-1 mb-3 w-75">
+      <mat-label>Lastname</mat-label>
+      <input matInput #last [required]="true" [(ngModel)]="data.user.lastname">
+    </mat-form-field>
+    <mat-form-field class="mt-1 mb-3 w-75">
+      <mat-label>Email</mat-label>
+      <input matInput #email [required]="true" [(ngModel)]="data.user.email">
+    </mat-form-field>
+    <mat-form-field class="mt-1 mb-3 w-75">
+      <mat-label>Adresse</mat-label>
+      <input matInput #adressv [required]="true" [(ngModel)]="adresse">
+    </mat-form-field>
+    <mat-form-field class="mt-1 mb-3 w-75">
+      <mat-label>PLZ</mat-label>
+      <input matInput #plzv [required]="true" [(ngModel)]="plz">
+    </mat-form-field>
+    <mat-form-field class="mt-1 mb-3 w-75">
+      <mat-label>Ort</mat-label>
+      <input matInput #ortv [required]="true" [(ngModel)]="ort">
+    </mat-form-field>
+  </div>
+  <div class="output-container d-flex flex-column w-50 px-5">
+    <h5 class="my-3">Your perosnal data:</h5>
+    <mat-label class="mb-2"><b>Name:</b></mat-label>
+    <span class="mb-2">&nbsp;{{(anrede ? anrede + ' ' : '') + first.value + ' ' + last.value}}</span>
+    <mat-label class="mb-2"><b>Email:</b></mat-label>
+    <span class="mb-2">&nbsp;{{email.value}}</span>
+    <mat-label class="mb-2"><b>Adresse:</b></mat-label>
+    <span>&nbsp;{{adresse}}</span>
+    <span class="mb-2">&nbsp;{{plz + ' ' + ort}}</span>
+    <mat-divider></mat-divider>
+    <h5 class="my-3">Your order data:</h5>
+    <mat-label class="mb-2"><b>Item:</b></mat-label>
+    <span class="mb-2">&nbsp;{{data.item.brand + ' ' +
+    data.item.model + ', ' +
+    data.item.color + ', ' +
+    data.item.volume
+      }}</span>
+    <mat-label class="mb-2"><b>Amount:</b></mat-label>
+    <span class="mb-2">&nbsp;{{amount}}</span>
+    <mat-label class="mb-2"><b>Total price:</b></mat-label>
+    <span>&nbsp;{{amount*data.item.price + '$'}}</span>
+  </div>
+  <div class="warning" *ngIf="!first.value || !last.value || !email.value || !adressv.value || !plzv.value || !ortv.value">
+    <span class="m-auto">Please fill all fields*</span>
+  </div>
+  <button mat-raised-button color="primary" class="mx-auto my-5 w-25 d-block text-white text-decoration-none"
+          (click)="onCancelClick()">Cancel
+  </button>
+    <button mat-raised-button color="accent" class="mx-auto my-5 w-25 d-block text-white text-decoration-none"
+            [disabled]="!first.value || !last.value || !email.value || !adressv.value || !plzv.value || !ortv.value"
+       (click)="onSaveClick()">Order
+    </button>
+  </div>
+
