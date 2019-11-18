@@ -1,6 +1,7 @@
 {
   "name": "shell-app",
   "version": "0.0.0",
+  "author": "Pavel Chachotkin",
   "scripts": {
     "ng": "ng",
     "start": "live-server dist/shell-app",
